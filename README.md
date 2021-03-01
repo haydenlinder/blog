@@ -14,3 +14,10 @@ yarn dev
 
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
+## Contributing
+
+1. Create a new markdown (.md) file in the ```/markdown/``` folder. Use dash-deliniated file names, for example: ```New-Blog-Post.md```.
+
+2. Write some markdown.
+
+3. Run ```npm run parse```.
