@@ -1,1 +1,1 @@
-module.exports = ["create-a-jamstack-blog"]
+module.exports = ["contributing","create-a-jamstack-blog"]

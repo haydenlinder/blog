@@ -9,22 +9,25 @@ import Typography from '@material-ui/core/Typography'
 import DarkModeSwitch from './DarkModeSwitch'
 
 const Header = ({ }) => {
+    const isSmall = false;
+    
     return (
-        <AppBar position="fixed">
+        <AppBar color='primary' position="fixed">
             <Container>
-                <Box mx={2} display='flex' alignItems='center' justifyContent='space-between'>
+                <Box display='flex' alignItems='center' justifyContent='space-between'>
                     <Box display='flex' alignItems='center'>
+                        {isSmall &&
                         <IconButton 
                             edge="start" 
                             color="inherit" 
                             aria-label="menu"
                         >
                             <MenuIcon />
-                        </IconButton>
+                        </IconButton>}
                         <Link href='/' passHref>
                             <Button color='inherit'>
-                                <Typography>
-                                    BLOG
+                                <Typography variant='h3'>
+                                    BLOG.md
                                 </Typography>
                             </Button>
                         </Link>

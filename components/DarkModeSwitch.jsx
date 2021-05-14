@@ -2,9 +2,10 @@ import Switch from '@material-ui/core/Switch';
 import { useState } from 'react';
 import Brightness4Icon from '@material-ui/icons/Brightness4';
 import Brightness7Icon from '@material-ui/icons/Brightness7';
+import useTheme from '../styles/theme';
 
 export default function DarkModeSwitch() {
-    const [isDark, setIsDark] = useState(true);
+    const { theme, isDark, setIsDark } = useTheme();
 
     const toggleDarkMode = e => {
         setIsDark(e.target.checked)
@@ -17,7 +18,7 @@ export default function DarkModeSwitch() {
     return (
         <Switch
             checked={isDark}
-            color='primary'
+            color={isDark ? 'secondary' : 'primary'}
             onChange={toggleDarkMode}
             name="dark-mode"
             icon={<Brightness4Icon />}

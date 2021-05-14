@@ -15,15 +15,18 @@ a {
   box-sizing: border-box;
 }
 
+#dark-root {
+  height: 100vh;
+  overflow-y: scroll;
+}
+
 .light {
-  height: 100wh;
   background: white;
   color: black;
 }
 
 .dark {
-  height: 100vh;
-  background: black;
+  background: rgb(0, 0, 0);
   color: white;
 }
 

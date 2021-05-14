@@ -19,13 +19,13 @@ const converter = new showdown.Converter({
     ]
 });
 
-const filenames = fs.readdirSync('pages-markdown', fsOptions)
+const filenames = fs.readdirSync('markdown', fsOptions)
 console.log('converting ', filenames)
 
 const manifest = []
 
 for(const filename of filenames) {
-    const sourcepath = `pages-markdown/${filename}`
+    const sourcepath = `markdown/${filename}`
     const functionName = filename.split('-').map(w => w[0].toUpperCase() + w.slice(1)).join('').slice(1,-3)
     
     const md = fs.readFileSync(sourcepath, fsOptions)
@@ -55,7 +55,7 @@ for(const filename of filenames) {
     const distpath = 'pages/' + title + '.jsx'
     fs.writeFileSync(distpath, jsx)
 
-    manifest.push(title)
+    title !== 'index' && manifest.push(title)
     console.log(`${sourcepath} -> ${distpath}`)
 }
 
