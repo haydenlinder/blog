@@ -2,6 +2,21 @@
 // we need to wrap out code expressions with literal: {``} 
 // I used this similar solution from https://github.com/showdownjs/showdown/wiki/Add-default-classes-for-each-HTML-element
 module.exports = {
+    escape$: [
+        {
+            type: 'output',
+            regex: new RegExp('(\\${)', 'g'),
+            replace: '\\$1'
+        },
+    ],
+    escapeBackticks: [
+        {
+            type: 'output',
+            // regex: new RegExp('(>{`[^]*?)(`)([^]*?`}<)', 'g'),
+            regex: new RegExp('(`)', 'g'),
+            replace: '\\$1'
+        },
+    ],
     escapeCodeBlocksWithStringLiteral: [
         {
             type: 'output',

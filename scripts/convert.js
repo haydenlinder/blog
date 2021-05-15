@@ -4,6 +4,8 @@ const {
     escapeCurlyBrackets,
     escapeCodeBlocksWithStringLiteral,
     unescapeAngleBrackets,
+    escape$,
+    escapeBackticks
 } = require('./my-plugins')
 
 showdown.setFlavor('github')
@@ -13,9 +15,10 @@ const fsOptions = { encoding: 'utf8' }
 
 const converter = new showdown.Converter({
     extensions: [
+        ...escapeBackticks,
         ...escapeCodeBlocksWithStringLiteral,
         ...unescapeAngleBrackets,
-        // ...escapeCurlyBrackets
+        ...escape$,
     ]
 });
 
