@@ -27,7 +27,7 @@ function MyApp({ Component, pageProps }) {
   return (
     <ThemeProvider theme={theme}>
       {/* See /components/DarkModeSwitch.jsx */}
-      <div id="dark-root" className='dark'>
+      <div >
           <Header />
             <Container>
               <Box display='flex' justifyContent='baseline' py={10} px={2} width='100%'>
