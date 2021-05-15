@@ -10,7 +10,7 @@ module.exports = {
         },
         {
             type: 'output',
-            regex: new RegExp(`<code (.*)>`, 'g'),
+            regex: new RegExp(`<code \(.*?\)>`, 'g'),
             replace: `<code $1>{\``
         },
         {

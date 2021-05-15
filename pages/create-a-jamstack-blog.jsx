@@ -1,6 +1,7 @@
 
         import { useEffect, useRef } from 'react'
         import { highlightBlock } from 'highlight.js'
+        import Link from 'next/link'
         
         export default function reateAJamstackBlog() {
             const ref = useRef()

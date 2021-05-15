@@ -1,4 +1,4 @@
-import { Box, List, ListItem, Typography } from '@material-ui/core'
+import { Box, Divider, List, ListItem, Typography } from '@material-ui/core'
 import Link from 'next/link'
 import { makeStyles } from '@material-ui/core/styles';
 
@@ -18,13 +18,15 @@ export default function MenuItems({ titles }) {
             </h1>
             <List className='hljs'>
                 {titles.map(title => 
-                    <Link href={`/${title}`} key={title} passHref>
+                    <div key={title} className='list-item'>
+                    <Link  href={`/${title}`}  passHref>
                         <ListItem button>
                             <Typography>
-                                    <a>{title}</a>
+                                    <a href={`/${title}`}>{title}</a>
                             </Typography>
                         </ListItem>
                     </Link>
+                </div>
                 )}
             </List>
         </Box>

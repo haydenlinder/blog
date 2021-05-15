@@ -12,10 +12,13 @@ import { useState, useEffect } from 'react';
 import '../styles/vs2015.css';
 import '../styles/vs.css';
 import Header from '../components/Header';
+import { useMediaQuery } from '@material-ui/core';
 
 function MyApp({ Component, pageProps }) {
 
   const { theme } = useTheme()
+
+  const isSmallerThanTablet = useMediaQuery('(min-width: 750px)');
 
   useEffect(() => {
     const jssStyles = document.querySelector('#jss-server-side');
@@ -26,18 +29,15 @@ function MyApp({ Component, pageProps }) {
 
   return (
     <ThemeProvider theme={theme}>
-      {/* See /components/DarkModeSwitch.jsx */}
-      <div >
-          <Header />
-            <Container>
-              <Box display='flex' justifyContent='baseline' py={10} px={2} width='100%'>
-                <MenuItems titles={manifest} />
-                <Box width='50%'>
-                  <Component {...pageProps} />
-                </Box>
-              </Box>
-            </Container>
-      </div>
+      <Header />
+      <Container className='container'>
+        <Box display='flex' pt={8} px={2} width='100%'>
+          {isSmallerThanTablet && <MenuItems titles={manifest} />}
+          <Box minWidth='60%' className='page' pb={20}>
+            <Component {...pageProps} />
+          </Box>
+        </Box>
+      </Container>
     </ThemeProvider>
   )
 }

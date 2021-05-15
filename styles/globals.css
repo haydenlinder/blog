@@ -6,18 +6,39 @@ body {
     Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
 }
 
+.page {
+  height: 100vh;
+  overflow: scroll;
+}
+
 a {
   color: inherit;
   text-decoration: none;
+}
+
+.dark .page a {
+  color: rgb(54, 205, 255);
+}
+
+.page a:hover {
+  text-decoration: underline;
+}
+
+.light .page a {
+  color: rgb(0, 63, 144);
+}
+
+.list-item {
+  border-bottom: 1px solid white;
 }
 
 * {
   box-sizing: border-box;
 }
 
-#dark-root {
+.container {
   height: 100vh;
-  overflow-y: scroll;
+  overflow-y: hidden;
 }
 
 .light {

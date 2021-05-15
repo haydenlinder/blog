@@ -3,7 +3,7 @@ const showdown = require('showdown');
 const { 
     escapeCurlyBrackets,
     escapeCodeBlocksWithStringLiteral,
-    unescapeAngleBrackets
+    unescapeAngleBrackets,
 } = require('./my-plugins')
 
 showdown.setFlavor('github')
@@ -34,6 +34,7 @@ for(const filename of filenames) {
     const jsx = `
         import { useEffect, useRef } from 'react'
         import { highlightBlock } from 'highlight.js'
+        import Link from 'next/link'
         
         export default function ${functionName}() {
             const ref = useRef()

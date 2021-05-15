@@ -8,6 +8,7 @@ export default class MyDocument extends Document {
       <Html lang='en'>
         <Head>
         </Head>
+        {/* See /components/DarkModeSwitch.jsx */}
         <body id="dark-root" className='dark'>
           <Main />
           <NextScript />
