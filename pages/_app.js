@@ -17,8 +17,9 @@ import { useMediaQuery } from '@material-ui/core';
 function MyApp({ Component, pageProps }) {
 
   const { theme } = useTheme()
+  const [showMenu, setShowMenu] = useState(true)
 
-  const isSmallerThanTablet = useMediaQuery('(min-width: 750px)');
+  const isLargerThanTablet = useMediaQuery('(min-width: 750px)');
 
   useEffect(() => {
     const jssStyles = document.querySelector('#jss-server-side');
@@ -27,12 +28,16 @@ function MyApp({ Component, pageProps }) {
     }
   }, []);
 
+  useEffect(() => {
+    setShowMenu(isLargerThanTablet);
+  },[isLargerThanTablet])
+
   return (
     <ThemeProvider theme={theme}>
       <Header />
       <Container className='container'>
         <Box display='flex' pt={8} px={2} width='100%'>
-          {isSmallerThanTablet && <MenuItems titles={manifest} />}
+          {showMenu && <MenuItems titles={manifest} />}
           <Box minWidth='60%' className='page' pb={20}>
             <Component {...pageProps} />
           </Box>
