@@ -9,9 +9,10 @@ const useStyles = makeStyles((theme) => ({
         backgroundColor: theme.palette.primary.main,
     },
 }));
-export default function MenuItems({ titles }) {
+export default function MenuItems({titles}) {
     const classes = useStyles()
-    return (
+    
+    return typeof window !== 'undefined' ?
         <Box pr={5}>
             <h1>
                 Posts
@@ -19,10 +20,10 @@ export default function MenuItems({ titles }) {
             <List className='hljs'>
                 {titles.map(title => 
                     <div key={title} className='list-item'>
-                    <Link  href={`/${title}`}  passHref>
+                    <Link href={`/posts/${title}`} passHref>
                         <ListItem button>
                             <Typography>
-                                    <a href={`/${title}`}>{title}</a>
+                                <a>{title}</a>
                             </Typography>
                         </ListItem>
                     </Link>
@@ -30,5 +31,5 @@ export default function MenuItems({ titles }) {
                 )}
             </List>
         </Box>
-    )
+    : null
 }

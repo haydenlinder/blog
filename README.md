@@ -2,24 +2,46 @@
 
 This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
-## Getting Started
+# Contributing
 
+Please consider taking a look at the [open issues](https://github.com/haydenlinder/blog/issues) for this project, which may serve as a good source for blog-worthy challenges.
+
+## 1. Fork
+
+Go to [the repo](https://github.com/haydenlinder/blog) for this project and fork it.
+
+Clone your fork locally:
+```bash
+git clone https://github.com/yourname/blog.git
+```
+Set the remote "upstream" to the original repo.
+```bash
+git remote add upstream https://github.com/haydenlinder/blog.git
+```
+
+## 2. Run Locally
 First, run the development server:
 
 ```bash
+cd blog
+npm install
 npm run dev
-# or
-yarn dev
 ```
 
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
-## Contributing
+## 3. Write
 
-1. Create a new markdown (.md) file in the ```/markdown/``` folder. Use dash-deliniated file names, for example: ```New-Blog-Post.md```.
+Create a new markdown (.md) file in the **/markdown/** folder. Use dash-deliniated file names, for example: **New-Blog-Post.md**.
 
-2. Write some [markdown](https://github.com/adam-p/markdown-here/wiki/Markdown-Cheatsheet).
+Write some [markdown](https://github.com/adam-p/markdown-here/wiki/Markdown-Cheatsheet).
 
-3. Run ```npm run parse```.
 
-4. Visit [http://localhost:3000/New-Blog-Post](http://localhost:3000/New-Blog-Post), but replace ```New-Blog-Post``` with the name of the file you created, excluding the .md extension.
+Visit [http://localhost:3000/New-Blog-Post](http://localhost:3000/New-Blog-Post), but replace *New-Blog-Post* with the name of the file you created, excluding the .md extension. You'll need to refresh the browser page after making file changes.
+
+## 4. Publish
+```bash
+git push origin main
+```
+
+Then open a pull request.

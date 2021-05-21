@@ -1,11 +1,7 @@
 import '../styles/globals.css';
 import Container from '@material-ui/core/Container';
 import MenuItems from '../components/MenuItems';
-import manifest from '../scripts/manifest';
 import Box from '@material-ui/core/Box';
-import Switch from '@material-ui/core/Switch';
-import Brightness7Icon from '@material-ui/icons/Brightness7';
-import Brightness4Icon from '@material-ui/icons/Brightness4';
 import { ThemeProvider } from '@material-ui/core/styles';
 import useTheme from '../styles/theme';
 import { useState, useEffect } from 'react';
@@ -14,7 +10,7 @@ import '../styles/vs.css';
 import Header from '../components/Header';
 import { useMediaQuery } from '@material-ui/core';
 
-function MyApp({ Component, pageProps }) {
+export default function MyApp({ Component, pageProps }) {
 
   const { theme } = useTheme()
   const [showMenu, setShowMenu] = useState(true)
@@ -37,7 +33,7 @@ function MyApp({ Component, pageProps }) {
       <Header />
       <Container className='container'>
         <Box display='flex' pt={8} px={2} width='100%'>
-          {showMenu && <MenuItems titles={manifest} />}
+          {showMenu && <MenuItems titles={pageProps.titles} />}
           <Box minWidth='60%' className='page' pb={20}>
             <Component {...pageProps} />
           </Box>
@@ -46,5 +42,3 @@ function MyApp({ Component, pageProps }) {
     </ThemeProvider>
   )
 }
-
-export default MyApp;

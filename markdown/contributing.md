@@ -1,6 +1,6 @@
 # Contributing
 
-Contributing is fun and easy. Please consider taking a look at the [open issues](https://github.com/haydenlinder/blog/issues) for this project, which may serve as a good source for blog-worthy challenges.
+Please consider taking a look at the [open issues](https://github.com/haydenlinder/blog/issues) for this project, which may serve as a good source for blog-worthy challenges.
 
 ## 1. Fork
 
@@ -32,15 +32,11 @@ Create a new markdown (.md) file in the **/markdown/** folder. Use dash-deliniat
 
 Write some [markdown](https://github.com/adam-p/markdown-here/wiki/Markdown-Cheatsheet).
 
-Run 
-```bash
-npm run parse
-```
-
-Visit [http://localhost:3000/New-Blog-Post](http://localhost:3000/New-Blog-Post), but replace *New-Blog-Post* with the name of the file you created, excluding the .md extension.
+Visit [http://localhost:3000/New-Blog-Post](http://localhost:3000/New-Blog-Post), but replace *New-Blog-Post* with the name of the file you created, excluding the .md extension. You'll need to refresh the browser page after making file changes.
 
 ## 4. Publish
 ```bash
 git push origin main
 ```
+
 Then open a pull request.
