@@ -49,7 +49,7 @@ export default function Post({ __html }) {
         for (let i = 0; i < codeBlocks.length; i++) {
             highlightBlock(codeBlocks[i]);
         }
-    }, []);
+    }, [__html]);
 
     return (
         <div ref={ref} dangerouslySetInnerHTML={{ __html }} />
@@ -62,6 +62,7 @@ const path = require('path');
 const fsOptions = { encoding: 'utf8' };
 
 const markdownFolderPath = path.join(process.cwd(), `markdown`);
+const manifestFolderPath = path.join(process.cwd(), `manifest/manifest.js`);
 
 export async function getStaticProps({ params }) {
     const showdown = require('showdown');
@@ -72,16 +73,19 @@ export async function getStaticProps({ params }) {
     const filePath = path.join(markdownFolderPath, params.slug + '.md');
     
     const md = fs.readFileSync(filePath, fsOptions);
-    const __html = converter.makeHtml(md);
 
+    const __html = converter.makeHtml(md);
+    const titles = fs.readdirSync(markdownFolderPath, fsOptions).map(title => title.slice(0, -3));
+    const manifest = `export const manifest = ${JSON.stringify(titles)}`
+    fs.writeFileSync(manifestFolderPath, manifest)
+    
     return {
-        props: { __html }
+        props: { __html, titles }
     };
 };
 
 export async function getStaticPaths() {
     const filenames = fs.readdirSync(markdownFolderPath, fsOptions);
-    console.log('converting ', filenames);
 
     return { 
         paths: filenames.map(name => `/posts/${name.slice(0,-3)}`),

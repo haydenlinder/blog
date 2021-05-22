@@ -8,13 +8,13 @@ import { useState, useEffect } from 'react';
 import '../styles/vs2015.css';
 import '../styles/vs.css';
 import Header from '../components/Header';
-import { useMediaQuery } from '@material-ui/core';
+import useMediaQuery from '@material-ui/core/useMediaQuery';
+import { manifest } from '../manifest/manifest'
 
 export default function MyApp({ Component, pageProps }) {
 
   const { theme } = useTheme()
-  const [showMenu, setShowMenu] = useState(true)
-
+  const [isMenuOpen, setIsMenuOpen] = useState(true)
   const isLargerThanTablet = useMediaQuery('(min-width: 750px)');
 
   useEffect(() => {
@@ -25,18 +25,20 @@ export default function MyApp({ Component, pageProps }) {
   }, []);
 
   useEffect(() => {
-    setShowMenu(isLargerThanTablet);
-  },[isLargerThanTablet])
+    setIsMenuOpen(isLargerThanTablet);
+  }, [isLargerThanTablet])
 
   return (
     <ThemeProvider theme={theme}>
-      <Header />
+      <Header setIsMenuOpen={setIsMenuOpen} isMenuOpen={isMenuOpen} />
       <Container className='container'>
-        <Box display='flex' pt={8} px={2} width='100%'>
-          {showMenu && <MenuItems titles={pageProps.titles} />}
-          <Box minWidth='60%' className='page' pb={20}>
-            <Component {...pageProps} />
-          </Box>
+        <MenuItems 
+          isMenuOpen={isMenuOpen || isLargerThanTablet}
+          setIsMenuOpen={setIsMenuOpen} 
+          titles={manifest} 
+        />
+        <Box className='page' pb={20}>
+          <Component {...pageProps} />
         </Box>
       </Container>
     </ThemeProvider>

@@ -24,6 +24,7 @@ const path = require('path');
 const fsOptions = { encoding: 'utf8' };
 
 const markdownFolderPath = path.join(process.cwd(), `markdown`);
+const manifestFolderPath = path.join(process.cwd(), `manifest/manifest.js`);
 
 export async function getStaticProps({ params }) {
     const showdown = require('showdown');
@@ -37,7 +38,9 @@ export async function getStaticProps({ params }) {
 
     const __html = converter.makeHtml(md);
     const titles = fs.readdirSync(markdownFolderPath, fsOptions).map(title => title.slice(0, -3));
-
+    const manifest = `export const manifest = ${JSON.stringify(titles)}`
+    fs.writeFileSync(manifestFolderPath, manifest)
+    
     return {
         props: { __html, titles }
     };

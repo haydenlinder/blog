@@ -7,20 +7,23 @@ import Link from 'next/link'
 import MenuIcon from '@material-ui/icons/Menu'
 import Typography from '@material-ui/core/Typography'
 import DarkModeSwitch from './DarkModeSwitch'
+import useMediaQuery from '@material-ui/core/useMediaQuery'
 
-const Header = ({ }) => {
-    const isSmall = false;
+const Header = ({ setIsMenuOpen, isMenuOpen }) => {
+
+    const isLargerThanTablet = useMediaQuery('(min-width: 750px)');
     
     return (
         <AppBar color='primary' position="fixed">
             <Container>
                 <Box display='flex' alignItems='center' justifyContent='space-between'>
                     <Box display='flex' alignItems='center'>
-                        {isSmall &&
+                        {!isLargerThanTablet &&
                         <IconButton 
                             edge="start" 
                             color="inherit" 
                             aria-label="menu"
+                            onClick={e => setIsMenuOpen(!isMenuOpen)}
                         >
                             <MenuIcon />
                         </IconButton>}

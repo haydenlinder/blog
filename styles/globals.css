@@ -6,11 +6,6 @@ body {
     Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
 }
 
-.page {
-  height: 100vh;
-  overflow: scroll;
-}
-
 a {
   color: inherit;
   text-decoration: none;
@@ -25,7 +20,7 @@ a {
 }
 
 .light .page a {
-  color: rgb(0, 63, 144);
+  color: blue;
 }
 
 .list-item {
@@ -36,10 +31,25 @@ a {
   box-sizing: border-box;
 }
 
+/* menu, page, contaner */
 .container {
-  height: 100vh;
-  overflow-y: hidden;
+  display: flex !important;
+  padding-top: 70px;
 }
+
+.page {
+  min-width: 60%;
+}
+
+.menu {
+  position: sticky !important;
+  position: -webkit-sticky !important;
+  top: 70px;
+  width: 300px;
+  min-width: 300px;
+  align-self: flex-start;
+}
+/*  */
 
 .light {
   background: white;

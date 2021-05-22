@@ -1,0 +1,1 @@
+export const manifest = ["contributing","create-a-jamstack-blog"]
