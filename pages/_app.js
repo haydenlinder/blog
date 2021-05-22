@@ -30,7 +30,7 @@ export default function MyApp({ Component, pageProps }) {
 
   return (
     <ThemeProvider theme={theme}>
-      <Header setIsMenuOpen={setIsMenuOpen} isMenuOpen={isMenuOpen} />
+      <Header setIsMenuOpen={setIsMenuOpen} isMenuOpen={isMenuOpen || isLargerThanTablet} />
       <Container className='container'>
         <MenuItems 
           isMenuOpen={isMenuOpen || isLargerThanTablet}
