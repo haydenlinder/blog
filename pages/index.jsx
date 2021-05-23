@@ -14,7 +14,7 @@ export default function Index({ titles }) {
     
     return (
         <div ref={ref}>
-            <h1 id="welcome-to-blogmd">Welcome To Blog.md!</h1>
+            <h1 id="welcome-to-blogmd">Welcome To BLOG-MD!</h1>
             <p>Where blog posts are written in markdown.</p>
             <p>If you'd like to add something, please see <Link href='/posts/contributing' passHref><a>contributing</a></Link>.</p>
             <p><br/></p>

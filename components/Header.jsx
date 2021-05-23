@@ -8,17 +8,24 @@ import MenuIcon from '@material-ui/icons/Menu'
 import Typography from '@material-ui/core/Typography'
 import DarkModeSwitch from './DarkModeSwitch'
 import useMediaQuery from '@material-ui/core/useMediaQuery'
+import { useState, useEffect } from 'react'
 
 const Header = ({ setIsMenuOpen, isMenuOpen }) => {
 
+    const [shouldShowMenuButton, setShouldShowMenuButton] = useState(false)
+
     const isLargerThanTablet = useMediaQuery('(min-width: 750px)');
+
+    useEffect(() => {
+        setShouldShowMenuButton(!isLargerThanTablet)
+    }, [isLargerThanTablet]);
     
     return (
         <AppBar color='primary' position="fixed">
             <Container>
                 <Box display='flex' alignItems='center' justifyContent='space-between'>
                     <Box display='flex' alignItems='center'>
-                        {!isLargerThanTablet &&
+                        {shouldShowMenuButton &&
                         <IconButton 
                             edge="start" 
                             color="inherit" 
@@ -30,7 +37,7 @@ const Header = ({ setIsMenuOpen, isMenuOpen }) => {
                         <Link href='/' passHref>
                             <Button color='inherit'>
                                 <Typography variant='h3'>
-                                    BLOG.md
+                                    BLOG-MD
                                 </Typography>
                             </Button>
                         </Link>
