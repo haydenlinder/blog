@@ -69,16 +69,16 @@ const manifestFolderPath = path.join(process.cwd(), `manifest/manifest.js`);
 
 export async function getStaticPaths() {
     const filenames = fs.readdirSync(markdownFolderPath, fsOptions);
-    const titles = filenames.map(name => `/posts/${name.slice(0,-3)}`);
+    const slugs = filenames.map(name => `/posts/${name.slice(0,-3)}`);
 
-    const manifest = `export const manifest = ${JSON.stringify(titles)}`;
+    const manifest = `export const manifest = ${JSON.stringify(slugs)}`;
     // Note that /manifest/manifest.js must already exist for this to work.
     fs.writeFileSync(manifestFolderPath, manifest);
 
     return { 
         // The `paths` returned here will determine the url of each 
         // post. For example, `/posts/my-blog-post`.
-        paths: titles,
+        paths: slugs.map(slug => `/posts/${slug}`,
         fallback: false
     };
 };
