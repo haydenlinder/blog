@@ -7,6 +7,7 @@ export default class MyDocument extends Document {
     return (
       <Html lang='en'>
         <Head>
+          <meta name="viewport" content="width=device-width, initial-scale=1.0"></meta>
         </Head>
         {/* See /components/DarkModeSwitch.jsx */}
         <body id="dark-root" className='dark'>
