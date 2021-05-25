@@ -38,6 +38,7 @@ To set up Dynamic Routes, I first create a folder called **/pages/** and add a f
 
 ```jsx
 // /pages/[slug].jsx
+
 export default function Post() {
     return (
         <div />
@@ -92,6 +93,74 @@ Next, I implement Static Generation by exporting a function called [getStaticPro
 export default function Post({ __html }) {
     return (
         <div dangerouslySetInnerHTML={{ __html }}/>
+    );
+};
+
+const fs = require('fs');
+const path = require('path');
+const fsOptions = { encoding: 'utf8' };
+
+const markdownFolderPath = path.join(process.cwd(), `markdown`);
+const manifestFolderPath = path.join(process.cwd(), `manifest/manifest.js`);
+
+// Extract `params` from `context` parameter, 
+// which contains the slug from `getStaticPaths`.
+export async function getStaticProps({ params }) {
+    // Set up showdown.
+    const showdown = require('showdown');
+    showdown.setFlavor('github');
+    const converter = new showdown.Converter({});
+    // params.slug is a slug generated from `getStaticPaths`.
+    const filePath = path.join(markdownFolderPath, params.slug + '.md');
+    
+    const md = fs.readFileSync(filePath, fsOptions);
+    const __html = converter.makeHtml(md);
+    
+    return {
+        // These are the props that the component will receive at build time.
+        props: { __html }
+    };
+};
+
+export async function getStaticPaths() {
+    const filenames = fs.readdirSync(markdownFolderPath, fsOptions);
+    const titles = filenames.map(name => `/posts/${name.slice(0,-3)}`);
+
+    const manifest = `export const manifest = ${JSON.stringify(titles)}`;
+    // Note that /manifest/manifest.js must already exist for this to work.
+    fs.writeFileSync(manifestFolderPath, manifest);
+
+    return { 
+        // The `paths` returned here will determine the url of each 
+        // post. For example, `/posts/my-blog-post`.
+        paths: titles,
+        fallback: false
+    };
+};
+```
+
+Finally, I add a bit of logic in **useEffect** to add syntax highlighting to the code blocks.
+
+```jsx
+// /pages/[slug.jsx]
+
+import { useEffect, useRef } from 'react';
+import { highlightBlock } from 'highlight.js';
+
+export default function Post({ __html }) {
+
+    const ref = useRef();
+
+    useEffect(() => {
+        const codeBlocks = ref.current.querySelectorAll('code');
+        
+        for (let i = 0; i < codeBlocks.length; i++) {
+            highlightBlock(codeBlocks[i]);
+        }
+    }, [__html]);
+
+    return (
+        <div ref={ref} dangerouslySetInnerHTML={{ __html }}/>
     );
 };
 

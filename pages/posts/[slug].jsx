@@ -1,5 +1,5 @@
-import { useEffect, useRef } from 'react'
-import { highlightBlock } from 'highlight.js'
+import { useEffect, useRef } from 'react';
+import { highlightBlock } from 'highlight.js';
 
 export default function Post({ __html }) {
 
