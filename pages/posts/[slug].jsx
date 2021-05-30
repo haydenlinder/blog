@@ -25,13 +25,16 @@ const fsOptions = { encoding: 'utf8' };
 
 const markdownFolderPath = path.join(process.cwd(), `markdown`);
 const manifestFolderPath = path.join(process.cwd(), `manifest/manifest.js`);
+const sitemapFilePath = path.join(process.cwd(), `public/sitemap.txt`);
 
 export async function getStaticPaths() {
     const filenames = fs.readdirSync(markdownFolderPath, fsOptions);
     const slugs = filenames.map(name => name.slice(0, -3));
 
     const manifest = `export const manifest = ${JSON.stringify(slugs)}`;
+    const sitemap = slugs.map(slug => `https://www.blog-md.com/posts/${slug}\n`)
     fs.writeFileSync(manifestFolderPath, manifest);
+    fs.writeFileSync(sitemapFilePath, sitemap.join(''));
 
     return {
         paths: slugs.map(slug => `/posts/${slug}`),
