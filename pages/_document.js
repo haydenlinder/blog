@@ -8,6 +8,7 @@ export default class MyDocument extends Document {
       <Html lang='en'>
         <Head>
           <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+          <script data-ad-client="ca-pub-2744833829139813" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
         </Head>
         {/* See /components/DarkModeSwitch.jsx */}
         <body id="dark-root" className='dark'>
