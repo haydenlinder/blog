@@ -1,4 +1,4 @@
-# How to Create A Blog with Markdown
+# Create a Jamstack Blog With Next.js
 
 Author: [Hayden Linder](https://github.com/haydenlinder)
 
