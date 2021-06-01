@@ -1,2 +1,4 @@
 https://www.blog-md.com/posts/contributing
-https://www.blog-md.com/posts/create-a-jamstack-blog
+https://www.blog-md.com/posts/create-a-jamstack-blog-with-nextjs
+https://www.blog-md.com/posts/protected-routes-in-nextjs
+https://www.blog-md.com/posts/using-javascript-objects-as-alternative-to-switch-statements
