@@ -10,7 +10,7 @@ import DarkModeSwitch from './DarkModeSwitch'
 import useMediaQuery from '@material-ui/core/useMediaQuery'
 import { useState, useEffect } from 'react'
 
-const Header = ({ setIsMenuOpen, isMenuOpen }) => {
+const Header = ({ setIsMenuOpen, isMenuOpen, isDark, setIsDark }) => {
 
     const [shouldShowMenuButton, setShouldShowMenuButton] = useState(false)
 
@@ -21,7 +21,7 @@ const Header = ({ setIsMenuOpen, isMenuOpen }) => {
     }, [isLargerThanTablet]);
     
     return (
-        <AppBar color='primary' position="fixed">
+        <AppBar color={isDark ?'primary': 'secondary'} position="fixed">
             <Container>
                 <Box display='flex' alignItems='center' justifyContent='space-between'>
                     <Box display='flex' alignItems='center'>
@@ -42,7 +42,7 @@ const Header = ({ setIsMenuOpen, isMenuOpen }) => {
                             </Button>
                         </Link>
                     </Box>
-                    <DarkModeSwitch />
+                    <DarkModeSwitch isDark={isDark} setIsDark={setIsDark}/>
                 </Box>
             </Container>
         </AppBar>

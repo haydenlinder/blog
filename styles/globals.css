@@ -1,3 +1,4 @@
+
 html,
 body {
   padding: 0;
@@ -12,7 +13,7 @@ a {
 }
 
 .dark .page a {
-  color: rgb(54, 205, 255);
+  color: #36cdff;
 }
 
 .page a:hover {
@@ -45,9 +46,13 @@ a {
   position: sticky !important;
   position: -webkit-sticky !important;
   top: 70px;
-  width: 300px;
-  min-width: 300px;
   align-self: flex-start;
+}
+
+.menu-list {
+  height: calc(100vh - 200px);
+  max-width: 300px;
+  min-width: 300px;
 }
 /*  */
 

@@ -5,13 +5,13 @@ import { ServerStyleSheets } from '@material-ui/core/styles';
 export default class MyDocument extends Document {
   render() {
     return (
-      <Html lang='en'>
+      // See /components/DarkModeSwitch.jsx
+      <Html lang='en' id="dark-root" className='light'>
         <Head>
           <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
           <script data-ad-client="ca-pub-2744833829139813" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
         </Head>
-        {/* See /components/DarkModeSwitch.jsx */}
-        <body id="dark-root" className='dark'>
+        <body >
           <Main />
           <NextScript />
         </body>

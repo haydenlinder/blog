@@ -3,35 +3,48 @@ import Box from '@material-ui/core/Box'
 import ListItem from '@material-ui/core/ListItem'
 import List from '@material-ui/core/List'
 import Link from 'next/link'
-import makeStyles from '@material-ui/core/styles/makeStyles';
+import SwipeableDrawer from '@material-ui/core/SwipeableDrawer';
+import { makeStyles } from '@material-ui/core'
 
-const useStyles = makeStyles((theme) => ({
+
+const useStyles = makeStyles(theme => ({
     root: {
-        width: '100%',
-        maxWidth: 360,
-        backgroundColor: theme.palette.primary.main,
+        maxWidth: 150,
+        width: 150,
     },
-}));
+    paper: {
+        background: theme.palette.primary.main,
+        color: theme.palette.secondary.main,
+        padding: 20
+    }
+}))
 
-export default function MenuItems({titles, isMenuOpen, setIsMenuOpen}) {
+export default function MenuItems({titles, isMenuOpen, setIsMenuOpen, isLargerThanTablet}) {
 
     const classes = useStyles();
-    
+
+    function MenuWrapper ({ children }) {
+        return isLargerThanTablet ? 
+        <Box pr={5} className='menu'>{children}</Box>
+        : 
+        <SwipeableDrawer
+            classes={classes}
+            PaperProps={{ className: classes.paper }}
+            anchor='left'
+            open={isMenuOpen}
+            onClose={e => setIsMenuOpen(false)}
+            onOpen={e => setIsMenuOpen(true)}
+        >{children}</SwipeableDrawer>;
+    }
+
     return isMenuOpen ?
-    // <SwipeableDrawer
-    //     classes={classes}
-    //     anchor='left'
-    //     open={isMenuOpen}
-    //     onClose={e => setIsMenuOpen(false)}
-    //     onOpen={e => setIsMenuOpen(true)}
-    // >
-        <Box pr={5} className='menu'>
+        <MenuWrapper isLargerThanTablet={isLargerThanTablet}>
             <h1>
                 Posts
             </h1>
-            <List className='hljs'>
+            <List className='hljs menu-list'>
                 {titles.map(title => 
-                    <div key={title} className='list-item'>
+                    <div onClick={e => setIsMenuOpen(false)} key={title} className='list-item'>
                         <Link href={`/posts/${title}`} passHref>
                             <ListItem button>
                                 <Typography>
@@ -42,7 +55,6 @@ export default function MenuItems({titles, isMenuOpen, setIsMenuOpen}) {
                     </div>
                 )}
             </List>
-        </Box>
-    // </SwipeableDrawer>
+        </MenuWrapper>
     : null;
 };
