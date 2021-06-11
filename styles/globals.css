@@ -96,6 +96,14 @@ td, th {
   padding: 8px;
 }
 
+.rainbow {
+  background: -webkit-linear-gradient(left, coral , goldenrod, mediumseagreen, darkturquoise, violet);
+  background: -o-linear-gradient(right, coral, goldenrod, mediumseagreen, darkturquoise, violet);
+  background: -moz-linear-gradient(right, coral, goldenrod, mediumseagreen, darkturquoise, violet);
+  background: linear-gradient(to right, coral , goldenrod, mediumseagreen, darkturquoise, violet);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
 
 
 

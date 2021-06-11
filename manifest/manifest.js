@@ -1,1 +1,1 @@
-export const manifest = ["contributing","create-a-jamstack-blog-with-nextjs","protected-routes-in-nextjs","using-javascript-objects-as-alternative-to-switch-statements"]
+export const manifest = ["contributing","create-a-jamstack-blog-with-nextjs","my-advice-for-breaking-into-tech","protected-routes-in-nextjs","using-javascript-objects-as-alternative-to-switch-statements"]
