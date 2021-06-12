@@ -105,5 +105,10 @@ td, th {
   -webkit-text-fill-color: transparent;
 }
 
+.center {
+  text-align: center !important;
+  width: 100% !important;
+  display: block;
+}
 
 
