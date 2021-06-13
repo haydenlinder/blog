@@ -12,8 +12,7 @@ import { useState, useEffect } from 'react'
 
 const Header = ({ setIsMenuOpen, isMenuOpen, isDark, setIsDark }) => {
 
-    const [shouldShowMenuButton, setShouldShowMenuButton] = useState(false)
-
+    const [shouldShowMenuButton, setShouldShowMenuButton] = useState(!isMenuOpen)
     const isLargerThanTablet = useMediaQuery('(min-width: 750px)');
 
     useEffect(() => {
@@ -25,15 +24,15 @@ const Header = ({ setIsMenuOpen, isMenuOpen, isDark, setIsDark }) => {
             <Container>
                 <Box display='flex' alignItems='center' justifyContent='space-between'>
                     <Box display='flex' alignItems='center'>
-                        {shouldShowMenuButton &&
                         <IconButton 
                             edge="start" 
                             color="inherit" 
                             aria-label="menu"
+                            className="menu-button"
                             onClick={e => setIsMenuOpen(!isMenuOpen)}
                         >
                             <MenuIcon />
-                        </IconButton>}
+                        </IconButton>
                         <Link href='/' passHref>
                             <Button color='inherit'>
                                 <Typography variant='h3'>

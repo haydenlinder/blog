@@ -38,7 +38,7 @@ export default function MenuItems({titles, isMenuOpen, setIsMenuOpen, isLargerTh
     }
 
     return isMenuOpen ?
-        <MenuWrapper isLargerThanTablet={isLargerThanTablet}>
+        <MenuWrapper>
             <h1>
                 Posts
             </h1>

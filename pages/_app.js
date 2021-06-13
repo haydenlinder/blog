@@ -14,6 +14,12 @@ import red from '@material-ui/core/colors/red';
 export default function MyApp({ Component, pageProps }) {
 
   const [isDark, setIsDark] = useState(false);
+  const [isMenuOpen, setIsMenuOpen] = useState(true);
+
+  const isLargerThanTablet = useMediaQuery(
+    '(min-width: 750px)', 
+    { defaultMatches: true }
+  );
 
   const theme = useMemo(() => createMuiTheme({
     palette: {
@@ -35,11 +41,8 @@ export default function MyApp({ Component, pageProps }) {
         main: '#36cdff',
       }
     },
-  }), [isDark])
-
-  const [isMenuOpen, setIsMenuOpen] = useState(true)
-  const isLargerThanTablet = useMediaQuery('(min-width: 750px)');
-
+  }), [isDark]);
+  
   useEffect(() => {
     const jssStyles = document.querySelector('#jss-server-side');
     if (jssStyles) {
@@ -49,7 +52,7 @@ export default function MyApp({ Component, pageProps }) {
 
   useEffect(() => {
     setIsMenuOpen(isLargerThanTablet);
-  }, [isLargerThanTablet])
+  }, [isLargerThanTablet]);
 
   return (
     <ThemeProvider theme={theme}>
@@ -66,5 +69,5 @@ export default function MyApp({ Component, pageProps }) {
         </Box>
       </Container>
     </ThemeProvider>
-  )
+  );
 }

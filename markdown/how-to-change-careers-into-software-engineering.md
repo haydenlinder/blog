@@ -86,7 +86,7 @@ You can watch a great tutorial [here](https://youtu.be/ldYcgPKEZC8).
 
 I recommend building something very simple at first, like a todo list. You are going to make a lot of mistakes your first time around, so use this as a learning exercise and don't invest too much time trying to recreate facebook.
 
-Once you become familiar with the technologies, think of an idea for a small project you want to build - something that wouldn't take too long, but would demonstrate and understanding of your tech stack. 
+Once you become familiar with the technologies, think of an idea for a small project you want to build - something that wouldn't take too long, but would demonstrate an understanding of your tech stack. 
 
 Make this code very neat, organized, and readable. If you can add tests, even better. This will be the project you will potentially showcase in interviews.
 
