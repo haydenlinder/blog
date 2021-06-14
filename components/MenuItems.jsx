@@ -1,40 +1,48 @@
-import Typography from '@material-ui/core/Typography'
-import Box from '@material-ui/core/Box'
-import ListItem from '@material-ui/core/ListItem'
-import List from '@material-ui/core/List'
-import Link from 'next/link'
-import SwipeableDrawer from '@material-ui/core/SwipeableDrawer';
-import { makeStyles } from '@material-ui/core'
+import Typography from '@material-ui/core/Typography';
+import Box from '@material-ui/core/Box';
+import ListItem from '@material-ui/core/ListItem';
+import List from '@material-ui/core/List';
+import Link from 'next/link';
+// import SwipeableDrawer from '@material-ui/core/SwipeableDrawer';
+import { makeStyles } from '@material-ui/core/styles';
+import dynamic from 'next/dynamic';
+import CircularProgress from '@material-ui/core/CircularProgress';
+import { useMemo } from 'react';
+
+const Drawer = dynamic(
+    () => import('@material-ui/core/SwipeableDrawer'),
+    { loading: () => <CircularProgress className="loading"/> }
+);
 
 
-const useStyles = makeStyles(theme => ({
-    root: {
-        maxWidth: 150,
-        width: 150,
-    },
-    paper: {
-        background: theme.palette.primary.main,
-        color: theme.palette.secondary.main,
-        padding: 20
-    }
-}))
-
-export default function MenuItems({titles, isMenuOpen, setIsMenuOpen, isLargerThanTablet}) {
-
-    const classes = useStyles();
+export default function MenuItems({titles, isMenuOpen, setIsMenuOpen, isLargerThanTablet, isDark}) {
+    
+    const useStyles = makeStyles(theme => ({
+        root: {
+            maxWidth: 150,
+            width: 150,
+        },
+        paper: {
+            background: theme.palette.primary.main,
+            color: theme.palette.secondary.main,
+            padding: 20
+        }
+    }));
+    
+    const classes = useStyles()
 
     function MenuWrapper ({ children }) {
-        return isLargerThanTablet ? 
+        return isLargerThanTablet ?
         <Box pr={5} className='menu'>{children}</Box>
-        : 
-        <SwipeableDrawer
+        :
+        <Drawer
             classes={classes}
             PaperProps={{ className: classes.paper }}
             anchor='left'
             open={isMenuOpen}
             onClose={e => setIsMenuOpen(false)}
             onOpen={e => setIsMenuOpen(true)}
-        >{children}</SwipeableDrawer>;
+        >{children}</Drawer>;
     }
 
     return isMenuOpen ?

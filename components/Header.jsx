@@ -35,9 +35,9 @@ const Header = ({ setIsMenuOpen, isMenuOpen, isDark, setIsDark }) => {
                         </IconButton>
                         <Link href='/' passHref>
                             <Button color='inherit'>
-                                <Typography variant='h3'>
-                                    BLOG-MD
-                                </Typography>
+                                {/* <Typography variant='h3'> */}
+                                   <h1 style={{ margin: 0, padding: 0 }}>BLOG-MD</h1> 
+                                {/* </Typography> */}
                             </Button>
                         </Link>
                     </Box>

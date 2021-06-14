@@ -67,6 +67,12 @@ a {
     display: unset;
   }
 }
+
+.loading {
+  position: absolute !important;
+  margin: auto !important;
+  inset: auto !important;
+}
 /*  */
 
 .light {

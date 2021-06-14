@@ -63,6 +63,7 @@ export default function MyApp({ Component, pageProps }) {
           isLargerThanTablet={isLargerThanTablet}
           setIsMenuOpen={setIsMenuOpen} 
           titles={manifest} 
+          isDark={isDark}
         />
         <Box className='page' pb={20}>
           <Component {...pageProps} />
