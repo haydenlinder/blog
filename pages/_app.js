@@ -14,11 +14,11 @@ import red from '@material-ui/core/colors/red';
 export default function MyApp({ Component, pageProps }) {
 
   const [isDark, setIsDark] = useState(false);
-  const [isMenuOpen, setIsMenuOpen] = useState(true);
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   const isLargerThanTablet = useMediaQuery(
     '(min-width: 750px)', 
-    { defaultMatches: true }
+    { defaultMatches: false }
   );
 
   const theme = useMemo(() => createMuiTheme({
